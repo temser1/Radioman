@@ -5,6 +5,7 @@ public class Radio {
     public int currentRadioStation;
     public int currentVolume;
 
+
     public void Next() {
         if (currentRadioStation < 0) {
             currentRadioStation = 0;
@@ -34,11 +35,11 @@ public class Radio {
         }
     }
 
-    public int getCurrentRadioStation() {
+    protected int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
-    public void setCurrentRadioStation(int newCurrentRadioStation) {
+    protected void setCurrentRadioStation(int newCurrentRadioStation) {
         if (newCurrentRadioStation < 0) {
             return;
         }
