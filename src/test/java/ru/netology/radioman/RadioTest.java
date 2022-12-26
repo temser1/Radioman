@@ -122,75 +122,75 @@ import org.junit.jupiter.params.provider.CsvFileSource;
         @Test
         public void shouldRadioStation() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setCurrentWave(7);
-            Assertions.assertEquals(7, Station.getRadioWave());
+            Station.setCurrentStation(7);
+            Assertions.assertEquals(7, Station.getRadioStation());
 
         }
 
         @Test
         public void increaseStationUp() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setCurrentWave(8);
-            Assertions.assertEquals(9, Station.increaseWave());
+            Station.setCurrentStation(8);
+            Assertions.assertEquals(9, Station.increaseStation());
 
         }
 
         @Test
         public void increaseStationUpBelow10() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setCurrentWave(10);
+            Station.setCurrentStation(10);
 
-            Assertions.assertEquals(0, Station.increaseWave());
+            Assertions.assertEquals(0, Station.increaseStation());
         }
 
         @Test
         public void decreaseStationDown() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setCurrentWave(8);
-            Assertions.assertEquals(7, Station.decreaseWave());
+            Station.setCurrentStation(8);
+            Assertions.assertEquals(7, Station.decreaseStation());
         }
 
         @Test
         public void decreaseStationBelowDown() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setMinWave();
-            Assertions.assertEquals(10, Station.decreaseWave());
+            Station.setMinStation();
+            Assertions.assertEquals(10, Station.decreaseStation());
         }
 
         @Test
         public void setMinStation() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setMinWave();
-            Assertions.assertEquals(0, Station.setMinWave());
+            Station.setMinStation();
+            Assertions.assertEquals(0, Station.setMinStation());
         }
 
         @Test
         public void setMaxStation() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setMaxWave();
-            Assertions.assertEquals(10, Station.setMaxWave());
+            Station.setMaxStation();
+            Assertions.assertEquals(10, Station.setMaxStation());
         }
 
         @Test
         public void notSetBelowMax() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setCurrentWave(11);
-            Assertions.assertEquals(0, Station.getRadioWave());
+            Station.setCurrentStation(11);
+            Assertions.assertEquals(0, Station.getRadioStation());
         }
 
         @Test
         public void notSetLessMin() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setCurrentWave(-1);
-            Assertions.assertEquals(0, Station.getRadioWave());
+            Station.setCurrentStation(-1);
+            Assertions.assertEquals(0, Station.getRadioStation());
         }
 
         @Test
         public void notIncreaseBelowTen() {
             Radio Station = new Radio(10, 0, 10, 0);
-            Station.setMaxWave();
+            Station.setMaxStation();
 
-            Assertions.assertEquals(0, Station.increaseWave());
+            Assertions.assertEquals(0, Station.increaseStation());
         }
 
     }

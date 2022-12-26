@@ -67,29 +67,29 @@ public class Radio {
         return currentVolume;
     }
 
-    public int getRadioWave() {
+    public int getRadioStation(){
         return radioStation;
     }
 
-    public void setCurrentWave(int newCurrentWave) {
-        if (newCurrentWave < minStation) {
+    public void setCurrentStation(int newCurrentStation) {
+        if (newCurrentStation < minStation) {
             return;
         }
-        if (newCurrentWave > maxStation) {
+        if (newCurrentStation > maxStation) {
             return;
         }
-        radioStation = newCurrentWave;
+        radioStation = newCurrentStation;
     }
 
-    public int setMaxWave() {
+    public int setMaxStation() {
         return maxStation;
     }
 
-    public int setMinWave() {
+    public int setMinStation() {
         return minStation;
     }
 
-    public int increaseWave() {
+    public int increaseStation() {
         if (radioStation >= maxStation) {
             return minStation;
         }
@@ -99,7 +99,7 @@ public class Radio {
         return radioStation;
     }
 
-    public int decreaseWave() {
+    public int decreaseStation() {
         if (radioStation <= minStation) {
             radioStation = maxStation;
         } else {
