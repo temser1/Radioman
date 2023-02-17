@@ -1,27 +1,26 @@
 package ru.netology.radioman;
+
 public class Radio {
 
+    private int maxWave = 10;
+    private int minWave = 0;
+    private int radioWave;
 
-    private int radioStation;
-    private int maxStation = 9;
-    private final int minStation = 0;
-    private int amountRadioStation = 10;
-
-    private final int maxVolume = 100;
-    private final int minVolume = 0;
+    private int maxVolume = 10;
+    private int minVolume = 0;
     private int currentVolume;
 
-    public Radio() {
+    public Radio(int maxWave, int minWave, int maxVolume, int minVolume) {
+
+        this.maxWave = maxWave;
+        this.minWave = minWave;
+
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+
+
     }
 
-    public Radio(int amountRadioWave) {
-        this.amountRadioStation = amountRadioWave;
-        this.maxStation = amountRadioWave - 1;
-    }
-
-    public int getStationsTotal() {
-        return amountRadioStation;
-    }
     public int getCurrentVolume() {
         return currentVolume;
     }
@@ -66,44 +65,44 @@ public class Radio {
         return currentVolume;
     }
 
-    public int getRadioStation(){
-        return radioStation;
+    public int getRadioWave() {
+        return radioWave;
     }
 
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < minStation) {
+    public void setCurrentWave(int newCurrentWave) {
+        if (newCurrentWave < minWave) {
             return;
         }
-        if (newCurrentStation > maxStation) {
+        if (newCurrentWave > maxWave) {
             return;
         }
-        radioStation = newCurrentStation;
+        radioWave = newCurrentWave;
     }
 
-    public int setMaxStation() {
-        return maxStation;
+    public int setMaxWave() {
+        return maxWave;
     }
 
-    public int setMinStation() {
-        return minStation;
+    public int setMinWave() {
+        return minWave;
     }
 
-    public int increaseStation() {
-        if (radioStation >= maxStation) {
-            return minStation;
+    public int increaseWave() {
+        if (radioWave >= maxWave) {
+            return minWave;
         }
-        if (radioStation > minStation) {
-            radioStation = radioStation + 1;
+        if (radioWave > minWave) {
+            radioWave = radioWave + 1;
         }
-        return radioStation;
+        return radioWave;
     }
 
-    public int decreaseStation() {
-        if (radioStation <= minStation) {
-            radioStation = maxStation;
+    public int decreaseWave() {
+        if (radioWave <= minWave) {
+            radioWave = maxWave;
         } else {
-            radioStation = radioStation - 1;
+            radioWave = radioWave - 1;
         }
-        return radioStation;
+        return radioWave;
     }
 }

@@ -1,17 +1,17 @@
 package ru.netology.radioman;
 
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-    Radio service = new Radio();
-
     @Test
     public void shouldRadioVolume() {
-        service.setCurrentVolume(8);
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setCurrentVolume(8);
 
         int expected = 8;
-        int actual = service.getCurrentVolume();
+        int actual = volume.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -19,12 +19,12 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetVolumeAboveMax() {
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setMaxVolume();
 
-        service.setMaxVolume();
 
-
-        int expected = 100;
-        int actual = service.increaseVolume();
+        int expected = 10;
+        int actual = volume.increaseVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -32,11 +32,11 @@ public class RadioTest {
 
     @Test
     public void decreaseVolumeBelowMin() {
-
-        service.setMinVolume();
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setMinVolume();
 
         int expected = 0;
-        int actual = service.decreaseVolume();
+        int actual = volume.decreaseVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -44,11 +44,11 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetVolumeLessMin() {
-
-        service.setCurrentVolume(-1);
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setCurrentVolume(-1);
 
         int expected = 0;
-        int actual = service.getCurrentVolume();
+        int actual = volume.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -56,11 +56,11 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetVolumeBelowMax() {
-
-        service.setCurrentVolume(111);
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setCurrentVolume(11);
 
         int expected = 0;
-        int actual = service.getCurrentVolume();
+        int actual = volume.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -68,11 +68,11 @@ public class RadioTest {
 
     @Test
     public void increaseVolumeUp() {
-
-        service.setCurrentVolume(8);
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setCurrentVolume(8);
 
         int expected = 9;
-        int actual = service.increaseVolume();
+        int actual = volume.increaseVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -80,11 +80,11 @@ public class RadioTest {
 
     @Test
     public void decreaseVolumeDown() {
-
-        service.setCurrentVolume(8);
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setCurrentVolume(8);
 
         int expected = 7;
-        int actual = service.decreaseVolume();
+        int actual = volume.decreaseVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -92,11 +92,11 @@ public class RadioTest {
 
     @Test
     public void setMinVolume() {
-
-        service.setCurrentVolume(0);
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setCurrentVolume(0);
 
         int expected = 0;
-        int actual = service.setMinVolume();
+        int actual = volume.setMinVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -104,9 +104,11 @@ public class RadioTest {
 
     @Test
     public void setMaxVolume() {
+        Radio volume = new Radio(10, 0, 10, 0);
+        volume.setCurrentVolume(10);
 
-        int expected = 100;
-        int actual = service.setMaxVolume();
+        int expected = 10;
+        int actual = volume.setMaxVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -114,74 +116,76 @@ public class RadioTest {
 
     @Test
     public void shouldRadioWave() {
-
-        service.setCurrentStation(7);
-        Assertions.assertEquals(7, service.getRadioStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setCurrentWave(7);
+        Assertions.assertEquals(7, wave.getRadioWave());
 
     }
 
     @Test
     public void increaseWaveUp() {
-
-        service.setCurrentStation(8);
-        Assertions.assertEquals(9, service.increaseStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setCurrentWave(8);
+        Assertions.assertEquals(9, wave.increaseWave());
 
     }
 
     @Test
-    public void increaseWaveUpBelow9() {
+    public void increaseWaveUpBelow10() {
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setCurrentWave(10);
 
-        service.setCurrentStation(9);
-
-        Assertions.assertEquals(0, service.increaseStation());
+        Assertions.assertEquals(0, wave.increaseWave());
     }
 
     @Test
     public void decreaseWaveDown() {
-
-        service.setCurrentStation(8);
-        Assertions.assertEquals(7, service.decreaseStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setCurrentWave(8);
+        Assertions.assertEquals(7, wave.decreaseWave());
     }
 
     @Test
     public void decreaseWaveBelowDown() {
-
-        service.setMinStation();
-        Assertions.assertEquals(9, service.decreaseStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setMinWave();
+        Assertions.assertEquals(10, wave.decreaseWave());
     }
 
     @Test
     public void setMinWave() {
-
-        service.setMinStation();
-        Assertions.assertEquals(0, service.setMinStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setMinWave();
+        Assertions.assertEquals(0, wave.setMinWave());
     }
 
     @Test
     public void setMaxWave() {
-
-        service.setMaxStation();
-        Assertions.assertEquals(9, service.setMaxStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setMaxWave();
+        Assertions.assertEquals(10, wave.setMaxWave());
     }
 
     @Test
     public void notSetBelowMax() {
-
-        service.setCurrentStation(101);
-        Assertions.assertEquals(0, service.getRadioStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setCurrentWave(11);
+        Assertions.assertEquals(0, wave.getRadioWave());
     }
 
     @Test
     public void notSetLessMin() {
-
-        service.setCurrentStation(-1);
-        Assertions.assertEquals(0, service.getRadioStation());
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setCurrentWave(-1);
+        Assertions.assertEquals(0, wave.getRadioWave());
     }
 
     @Test
-    public void howManiStations() {
-        Radio service = new Radio(10);
+    public void notIncreaseBelowTen() {
+        Radio wave = new Radio(10, 0, 10, 0);
+        wave.setMaxWave();
 
-        Assertions.assertEquals(10, service.getStationsTotal());
+        Assertions.assertEquals(0, wave.increaseWave());
     }
+
 }
